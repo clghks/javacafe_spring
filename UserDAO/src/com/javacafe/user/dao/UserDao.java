@@ -1,14 +1,13 @@
 package com.javacafe.user.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.javacafe.user.domain.User;
 
-public class UserDao {
+public abstract class UserDao {
 	
 	public void add(User user) throws ClassNotFoundException, SQLException {
 		Connection connection = getConnection();
@@ -45,10 +44,5 @@ public class UserDao {
 		return user;
 	}
 	
-	private Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/springbook", "spring", "book");
-
-		return connection;
-	}
+	public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
 }

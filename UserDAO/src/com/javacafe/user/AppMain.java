@@ -3,11 +3,12 @@ package com.javacafe.user;
 import java.sql.SQLException;
 
 import com.javacafe.user.dao.UserDao;
+import com.javacafe.user.dao.impl.NUserDao;
 import com.javacafe.user.domain.User;
 
 public class AppMain {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		UserDao userDao = new UserDao();
+		UserDao userDao = new NUserDao();
 		
 		User user = new User();
 		user.setId("clghks");
