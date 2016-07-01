@@ -2,12 +2,15 @@ package com.javacafe.user;
 
 import java.sql.SQLException;
 
+import com.javacafe.user.dao.ConnectionMaker;
+import com.javacafe.user.dao.DConnectionMaker;
 import com.javacafe.user.dao.UserDao;
 import com.javacafe.user.domain.User;
 
 public class AppMain {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		UserDao userDao = new UserDao();
+		ConnectionMaker connectionMaker = new DConnectionMaker();
+		UserDao userDao = new UserDao(connectionMaker);
 		
 		User user = new User();
 		user.setId("clghks");
