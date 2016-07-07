@@ -2,13 +2,17 @@ package com.javacafe.user;
 
 import java.sql.SQLException;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.javacafe.user.dao.DaoFactory;
 import com.javacafe.user.dao.UserDao;
 import com.javacafe.user.domain.User;
 
 public class AppMain {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		UserDao userDao = new DaoFactory().userDao();
+		ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+		UserDao userDao = context.getBean("userDao", UserDao.class);
 		
 		User user = new User();
 		user.setId("clghks");
